@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InventoryTransactionRepo extends JpaRepository<InventoryTransaction, Integer> {
-
+//comment for branch
 }
