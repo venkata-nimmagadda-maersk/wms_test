@@ -33,4 +33,15 @@ public class PutawayService {
         putawayRepo.deleteAll();
     }
 
+    public void putawayStockWithSP(Putaway putaway) {
+        putawayRepo.putawayStock(
+            putaway.getPutawayID(),
+            putaway.getPurchaseOrder().getPoid(),
+            putaway.getProduct().getProdId(),
+            putaway.getWarehouse().getWarehouseID(),
+            putaway.getQuantityPutaway(),
+            new java.sql.Date(putaway.getPutawayDate().getTime())
+        );
+    }
+
 }

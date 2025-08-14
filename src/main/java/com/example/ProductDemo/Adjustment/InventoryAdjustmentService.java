@@ -30,6 +30,17 @@ public class InventoryAdjustmentService {
     public void deleteAdjustment(int id) {
         inventoryAdjustmentRepo.deleteById(id);
     }
+    public void adjustInventoryWithProcedure(InventoryAdjustment adjustment) {
+        inventoryAdjustmentRepo.adjustInventory(
+            adjustment.getAdjustmentID(),
+            adjustment.getProduct().getProdId(),
+            adjustment.getWarehouse().getWarehouseID(),
+            adjustment.getAdjustmentType(),
+            adjustment.getQuantityChange(),
+            new java.sql.Date(adjustment.getAdjustmentDate().getTime()),
+            adjustment.getReason()
+        );
+    }
 
 
 }

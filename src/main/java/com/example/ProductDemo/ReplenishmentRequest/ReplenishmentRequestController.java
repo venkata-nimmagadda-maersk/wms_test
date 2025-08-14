@@ -33,6 +33,12 @@ public class ReplenishmentRequestController {
         return ResponseEntity.ok(created);
     }
 
+    @PostMapping("/sp")
+    public ResponseEntity<Void> createRequestWithSP(@RequestBody ReplenishmentRequest request) {
+        service.createReplenishmentRequestWithSP(request);
+        return ResponseEntity.ok().build();
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<ReplenishmentRequest> updateRequest(@PathVariable int id, @RequestBody ReplenishmentRequest request) {
         return service.getRequestById(id)
@@ -59,6 +65,5 @@ public class ReplenishmentRequestController {
             return ResponseEntity.notFound().build();
         }
     }
-
 
 }

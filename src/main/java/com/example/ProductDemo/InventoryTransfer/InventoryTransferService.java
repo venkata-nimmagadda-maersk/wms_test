@@ -32,5 +32,17 @@ public class InventoryTransferService {
         inventoryTransferRepo.deleteAll();
     }
 
+    public void performInventoryTransferWithSP(InventoryTransfer transfer) {
+        inventoryTransferRepo.performInventoryTransfer(
+            transfer.getTransferID(),
+            transfer.getProduct().getProdId(),
+            transfer.getFromWarehouse().getWarehouseID(),
+            transfer.getToWarehouse().getWarehouseID(),
+            transfer.getQuantity(),
+            new java.sql.Date(transfer.getTransferDate().getTime()),
+            transfer.getReferenceNote()
+        );
+    }
+
 
 }
