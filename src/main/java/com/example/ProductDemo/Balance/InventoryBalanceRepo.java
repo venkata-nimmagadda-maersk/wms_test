@@ -10,6 +10,5 @@ import java.util.Map;
 
 @Repository
 public interface InventoryBalanceRepo extends JpaRepository<InventoryBalance, Integer> {
-    @Procedure(procedureName = "GetInventorySnapshot")
-    List<Map<String, Object>> getInventorySnapshot();
+
 }

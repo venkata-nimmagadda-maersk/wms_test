@@ -33,11 +33,5 @@ public class ReplenishmentRequestService {
         repo.deleteAll();
     }
 
-    public void createReplenishmentRequestWithProcedure(int productId, int fromWarehouseId, int toWarehouseId, int quantityRequested, Date requestDate, String status) {
-        repo.createReplenishmentRequest(productId, fromWarehouseId, toWarehouseId, quantityRequested, requestDate, status);
-    }
 
-    public void fulfillReplenishmentRequestWithProcedure(int requestId) {
-        repo.fulfillReplenishmentRequest(requestId);
-    }
 }

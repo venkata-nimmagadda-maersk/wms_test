@@ -33,11 +33,5 @@ public class PurchaseOrderService {
         purchaseOrderRepo.deleteAll();
     }
 
-    public void createPurchaseOrderWithProcedure(String supplierName, Date orderDate, Date expectedDeliveryDate, String status) {
-        purchaseOrderRepo.createPurchaseOrder(supplierName, orderDate, expectedDeliveryDate, status);
-    }
 
-    public void receivePurchaseOrderWithProcedure(int poid) {
-        purchaseOrderRepo.receivePurchaseOrder(poid);
-    }
 }

@@ -9,9 +9,5 @@ import java.util.Map;
 
 @Repository
 public interface StockRepo extends JpaRepository<Stock, Integer> {
-    @Procedure(procedureName = "GetStockStatus")
-    Map<String, Object> getStockStatus(
-        @Param("productid") int productId,
-        @Param("warehouseid") int warehouseId
-    );
+
 }

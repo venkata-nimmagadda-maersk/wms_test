@@ -61,14 +61,4 @@ public class StockController {
         }
     }
 
-    @GetMapping("/status")
-    public ResponseEntity<Map<String, Object>> getStockStatus(
-            @RequestParam int productId,
-            @RequestParam int warehouseId) {
-        Map<String, Object> status = stockService.getStockStatus(productId, warehouseId);
-        if (status == null || status.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(status);
-    }
 }

@@ -33,7 +33,4 @@ public class PutawayService {
         putawayRepo.deleteAll();
     }
 
-    public void putawayStock(int poid, int productId, int warehouseId, int quantityPutaway, Date putawayDate) {
-        putawayRepo.putawayStock(poid, productId, warehouseId, quantityPutaway, putawayDate);
-    }
 }

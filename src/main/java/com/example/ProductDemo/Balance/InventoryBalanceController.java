@@ -58,12 +58,5 @@ public class InventoryBalanceController {
         }
     }
 
-    @GetMapping("/snapshot")
-    public ResponseEntity<List<Map<String, Object>>> getInventorySnapshot() {
-        List<Map<String, Object>> snapshot = inventoryBalanceService.getInventorySnapshot();
-        if (snapshot == null || snapshot.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(snapshot);
-    }
+
 }

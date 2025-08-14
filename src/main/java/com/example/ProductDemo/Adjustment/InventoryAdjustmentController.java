@@ -58,15 +58,5 @@ public class InventoryAdjustmentController {
         }
     }
 
-    @PostMapping("/adjust-inventory")
-    public ResponseEntity<Void> adjustInventoryWithProcedure(
-            @RequestParam int productId,
-            @RequestParam int warehouseId,
-            @RequestParam String adjustmentType,
-            @RequestParam int quantityChange,
-            @RequestParam Date adjustmentDate,
-            @RequestParam String reason) {
-        inventoryAdjustmentService.callAdjustInventoryProcedure(productId, warehouseId, adjustmentType, quantityChange, adjustmentDate, reason);
-        return ResponseEntity.ok().build();
-    }
+
 }
