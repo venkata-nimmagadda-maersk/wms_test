@@ -59,14 +59,5 @@ public class PutawayController {
         }
     }
 
-    @PostMapping("/putaway-stock")
-    public ResponseEntity<Void> putawayStock(
-            @RequestParam int poid,
-            @RequestParam int productId,
-            @RequestParam int warehouseId,
-            @RequestParam int quantityPutaway,
-            @RequestParam Date putawayDate) {
-        putawayService.putawayStock(poid, productId, warehouseId, quantityPutaway, putawayDate);
-        return ResponseEntity.ok().build();
-    }
+
 }

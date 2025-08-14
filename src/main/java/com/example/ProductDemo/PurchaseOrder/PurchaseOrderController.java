@@ -60,19 +60,4 @@ public class PurchaseOrderController {
         }
     }
 
-    @PostMapping("/create-with-procedure")
-    public ResponseEntity<Void> createPurchaseOrderWithProcedure(
-            @RequestParam String supplierName,
-            @RequestParam Date orderDate,
-            @RequestParam Date expectedDeliveryDate,
-            @RequestParam String status) {
-        purchaseOrderService.createPurchaseOrderWithProcedure(supplierName, orderDate, expectedDeliveryDate, status);
-        return ResponseEntity.ok().build();
-    }
-
-    @PostMapping("/receive/{poid}")
-    public ResponseEntity<Void> receivePurchaseOrderWithProcedure(@PathVariable int poid) {
-        purchaseOrderService.receivePurchaseOrderWithProcedure(poid);
-        return ResponseEntity.ok().build();
-    }
 }

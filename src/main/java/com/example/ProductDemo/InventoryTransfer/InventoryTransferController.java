@@ -57,24 +57,5 @@ public class InventoryTransferController {
         }
     }
 
-    @PostMapping("/perform-transfer")
-    public ResponseEntity<Void> performInventoryTransfer(
-            @RequestParam int transferId,
-            @RequestParam int productId,
-            @RequestParam int fromWarehouseId,
-            @RequestParam int toWarehouseId,
-            @RequestParam int quantity,
-            @RequestParam Date transferDate,
-            @RequestParam String referenceNote) {
-        inventoryTransferService.performInventoryTransfer(
-            transferId,
-            productId,
-            fromWarehouseId,
-            toWarehouseId,
-            quantity,
-            transferDate,
-            referenceNote
-        );
-        return ResponseEntity.ok().build();
-    }
+
 }

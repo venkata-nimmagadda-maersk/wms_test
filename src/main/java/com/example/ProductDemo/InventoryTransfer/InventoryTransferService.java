@@ -32,15 +32,5 @@ public class InventoryTransferService {
         inventoryTransferRepo.deleteAll();
     }
 
-    public void performInventoryTransfer(int transferId, int productId, int fromWarehouseId, int toWarehouseId, int quantity, java.sql.Date transferDate, String referenceNote) {
-        inventoryTransferRepo.performInventoryTransfer(
-            transferId,
-            productId,
-            fromWarehouseId,
-            toWarehouseId,
-            quantity,
-            transferDate,
-            referenceNote
-        );
-    }
+
 }

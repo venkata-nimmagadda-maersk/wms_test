@@ -60,21 +60,5 @@ public class ReplenishmentRequestController {
         }
     }
 
-    @PostMapping("/create-with-procedure")
-    public ResponseEntity<Void> createReplenishmentRequestWithProcedure(
-            @RequestParam int productId,
-            @RequestParam int fromWarehouseId,
-            @RequestParam int toWarehouseId,
-            @RequestParam int quantityRequested,
-            @RequestParam Date requestDate,
-            @RequestParam String status) {
-        service.createReplenishmentRequestWithProcedure(productId, fromWarehouseId, toWarehouseId, quantityRequested, requestDate, status);
-        return ResponseEntity.ok().build();
-    }
 
-    @PostMapping("/fulfill/{requestId}")
-    public ResponseEntity<Void> fulfillReplenishmentRequestWithProcedure(@PathVariable int requestId) {
-        service.fulfillReplenishmentRequestWithProcedure(requestId);
-        return ResponseEntity.ok().build();
-    }
 }

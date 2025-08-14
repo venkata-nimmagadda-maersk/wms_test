@@ -33,7 +33,4 @@ public class StockService {
         stockRepo.deleteAll();
     }
 
-    public Map<String, Object> getStockStatus(int productId, int warehouseId) {
-        return stockRepo.getStockStatus(productId, warehouseId);
-    }
 }

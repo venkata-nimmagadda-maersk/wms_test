@@ -33,7 +33,5 @@ public class InventoryBalanceService {
         inventoryBalanceRepo.deleteAll();
     }
 
-    public List<Map<String, Object>> getInventorySnapshot() {
-        return inventoryBalanceRepo.getInventorySnapshot();
-    }
+
 }

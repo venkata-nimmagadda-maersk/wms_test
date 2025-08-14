@@ -31,7 +31,5 @@ public class InventoryAdjustmentService {
         inventoryAdjustmentRepo.deleteById(id);
     }
 
-    public void callAdjustInventoryProcedure(int productId, int warehouseId, String adjustmentType, int quantityChange, Date adjustmentDate, String reason) {
-        inventoryAdjustmentRepo.adjustInventory(productId, warehouseId, adjustmentType, quantityChange, adjustmentDate, reason);
-    }
+
 }
