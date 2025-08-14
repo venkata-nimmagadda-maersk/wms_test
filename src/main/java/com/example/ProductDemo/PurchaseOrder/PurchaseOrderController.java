@@ -60,4 +60,26 @@ public class PurchaseOrderController {
         }
     }
 
+    public static class PurchaseOrderSPRequest {
+        public PurchaseOrder purchaseOrder;
+        public Integer productId;
+        public Integer quantityOrdered;
+    }
+
+    @PostMapping("/sp")
+    public ResponseEntity<Void> createPurchaseOrderWithSP(@RequestBody PurchaseOrderSPRequest request) {
+        if (request == null || request.purchaseOrder == null || request.productId == null || request.quantityOrdered == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        purchaseOrderService.createPurchaseOrderWithSP(request.purchaseOrder, request.productId, request.quantityOrdered);
+        return ResponseEntity.ok().build();
+    }
+    @PutMapping("/{poid}/status/received")
+    public ResponseEntity<Void> updateStatusToReceived(@PathVariable Integer poid) {
+        if (purchaseOrderService.getPurchaseOrderById(poid).isPresent()) {
+            purchaseOrderService.updateStatusToReceived(poid);
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

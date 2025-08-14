@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/inventory-transfers")
 public class InventoryTransferController {
@@ -56,6 +56,10 @@ public class InventoryTransferController {
             return ResponseEntity.notFound().build();
         }
     }
-
+    @PostMapping("/sp")
+    public ResponseEntity<Void> performInventoryTransferWithSP(@RequestBody InventoryTransfer transfer) {
+        inventoryTransferService.performInventoryTransferWithSP(transfer);
+        return ResponseEntity.ok().build();
+    }
 
 }

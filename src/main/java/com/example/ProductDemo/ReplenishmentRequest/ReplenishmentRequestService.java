@@ -33,5 +33,15 @@ public class ReplenishmentRequestService {
         repo.deleteAll();
     }
 
-
+    public void createReplenishmentRequestWithSP(ReplenishmentRequest request) {
+        repo.createReplenishmentRequest(
+            request.getRequestID(),
+            request.getProduct().getProdId(),
+            request.getFromWarehouse().getWarehouseID(),
+            request.getToWarehouse().getWarehouseID(),
+            request.getQuantityRequested(),
+            new java.sql.Date(request.getRequestDate().getTime()),
+            request.getStatus()
+        );
+    }
 }

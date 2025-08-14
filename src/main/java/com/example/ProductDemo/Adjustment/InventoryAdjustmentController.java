@@ -57,6 +57,14 @@ public class InventoryAdjustmentController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PostMapping("/procedure")
+    public ResponseEntity<Void> adjustInventoryWithProcedure(@RequestBody(required = true) InventoryAdjustment adjustment) {
+        if (adjustment == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        inventoryAdjustmentService.adjustInventoryWithProcedure(adjustment);
+        return ResponseEntity.ok().build();
+    }
 
 
 }

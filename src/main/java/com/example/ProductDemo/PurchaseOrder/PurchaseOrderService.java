@@ -3,7 +3,6 @@ package com.example.ProductDemo.PurchaseOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,5 +32,19 @@ public class PurchaseOrderService {
         purchaseOrderRepo.deleteAll();
     }
 
+    public void createPurchaseOrderWithSP(PurchaseOrder purchaseOrder, Integer productId, Integer quantityOrdered) {
+        purchaseOrderRepo.createPurchaseOrder(
+            purchaseOrder.getPoid(),
+            purchaseOrder.getSupplierName(),
+            new java.sql.Date(purchaseOrder.getOrderDate().getTime()),
+            new java.sql.Date(purchaseOrder.getExpectedDeliveryDate().getTime()),
+            purchaseOrder.getStatus(),
+            productId,
+            quantityOrdered
+        );
+    }
+    public void updateStatusToReceived(Integer poid) {
+        purchaseOrderRepo.updateStatusToReceived(poid);
+    }
 
 }

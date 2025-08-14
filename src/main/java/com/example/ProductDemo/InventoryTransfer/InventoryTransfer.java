@@ -2,6 +2,8 @@ package com.example.ProductDemo.InventoryTransfer;
 
 import com.example.ProductDemo.Product.Product;
 import com.example.ProductDemo.Warehouse.Warehouse;
+import com.example.ProductDemo.Stock.Stock;
+import com.example.ProductDemo.Balance.InventoryBalance;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

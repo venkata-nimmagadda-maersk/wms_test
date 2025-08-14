@@ -59,5 +59,11 @@ public class PutawayController {
         }
     }
 
+    @PostMapping("/sp")
+    public ResponseEntity<Void> putawayStockWithSP(@RequestBody Putaway putaway) {
+        putawayService.putawayStockWithSP(putaway);
+        return ResponseEntity.ok().build();
+    }
+
 
 }
