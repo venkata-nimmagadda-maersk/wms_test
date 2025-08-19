@@ -18,12 +18,8 @@ public class ProductService {
     public void addProduct(Product product) {
         repo.save(product);
     }
-    public void editProduct(Product product){
-        repo.save(product);
-    }
-    public void deleteProduct(int prodId){
-        repo.deleteById(prodId);
-    }
+    public void editProduct(Product product){repo.save(product);}
+    public void deleteProduct(int prodId){repo.deleteById(prodId);}
     public void deleteAll() {
         repo.deleteAll();
     }
