@@ -5,8 +5,10 @@ import com.example.ProductDemo.ReplenishmentRequest.ReplenishmentRequestControll
 import com.example.ProductDemo.ReplenishmentRequest.ReplenishmentRequestService;
 import com.example.ProductDemo.Product.Product;
 import com.example.ProductDemo.Warehouse.Warehouse;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +26,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ReplenishmentRequestController.class)
+@AutoConfigureMockMvc
 public class ReplenishmentRequestControllerTest {
 
     @Autowired
     private MockMvc mvc;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @MockBean
     private ReplenishmentRequestService service;
@@ -66,9 +72,10 @@ public class ReplenishmentRequestControllerTest {
     @Test
     void testCreateRequest() throws Exception {
         when(service.saveRequest(sample)).thenReturn(sample);
+        String json = objectMapper.writeValueAsString(sample);
         mvc.perform(post("/api/replenishment-requests")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"requestID\":3,\"product\":{\"prodId\":1,\"prodName\":\"P1\"},\"fromWarehouse\":{\"warehouseID\":1,\"warehouseName\":\"W1\",\"location\":\"Loc1\"},\"toWarehouse\":{\"warehouseID\":2,\"warehouseName\":\"W2\",\"location\":\"Loc2\"},\"quantityRequested\":30,\"requestDate\":\"2024-06-01\",\"status\":\"Pending\"}"))
+                .content(json))
                 .andExpect(status().isOk());
     }
 
@@ -76,9 +83,10 @@ public class ReplenishmentRequestControllerTest {
     void testUpdateRequest() throws Exception {
         when(service.getRequestById(3)).thenReturn(Optional.of(sample));
         when(service.saveRequest(sample)).thenReturn(sample);
+        String json = objectMapper.writeValueAsString(sample);
         mvc.perform(put("/api/replenishment-requests/3")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"requestID\":3,\"product\":{\"prodId\":1,\"prodName\":\"P1\"},\"fromWarehouse\":{\"warehouseID\":1,\"warehouseName\":\"W1\",\"location\":\"Loc1\"},\"toWarehouse\":{\"warehouseID\":2,\"warehouseName\":\"W2\",\"location\":\"Loc2\"},\"quantityRequested\":30,\"requestDate\":\"2024-06-01\",\"status\":\"Pending\"}"))
+                .content(json))
                 .andExpect(status().isOk());
     }
 
@@ -100,10 +108,10 @@ public class ReplenishmentRequestControllerTest {
     @Test
     void testCreateRequestWithSP() throws Exception {
         doNothing().when(service).createReplenishmentRequestWithSP(sample);
+        String json = objectMapper.writeValueAsString(sample);
         mvc.perform(post("/api/replenishment-requests/sp")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"requestID\":3,\"product\":{\"prodId\":1,\"prodName\":\"P1\"},\"fromWarehouse\":{\"warehouseID\":1,\"warehouseName\":\"W1\",\"location\":\"Loc1\"},\"toWarehouse\":{\"warehouseID\":2,\"warehouseName\":\"W2\",\"location\":\"Loc2\"},\"quantityRequested\":30,\"requestDate\":\"2024-06-01\",\"status\":\"Pending\"}"))
+                .content(json))
                 .andExpect(status().isOk());
     }
 }
-

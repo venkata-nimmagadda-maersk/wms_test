@@ -79,5 +79,12 @@ public class InventoryTransferControllerTest {
         mvc.perform(delete("/api/inventory-transfers/3"))
                 .andExpect(status().isOk());
     }
+    @Test
+    void testPerformInventoryTransferWithSP() throws Exception {
+        mvc.perform(post("/api/inventory-transfers/sp")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"transferID\":3,\"product\":{\"prodId\":1,\"prodName\":\"P1\",\"price\":100,\"category\":\"C1\",\"categoryName\":\"CN1\"},\"fromWarehouse\":{\"warehouseID\":1,\"warehouseName\":\"W1\",\"location\":\"Loc1\"},\"toWarehouse\":{\"warehouseID\":2,\"warehouseName\":\"W2\",\"location\":\"Loc2\"},\"quantity\":20,\"transferDate\":\"2024-06-01\",\"referenceNote\":\"Bulk Transfer\"}"))
+                .andExpect(status().isOk());
+    }
 }
 

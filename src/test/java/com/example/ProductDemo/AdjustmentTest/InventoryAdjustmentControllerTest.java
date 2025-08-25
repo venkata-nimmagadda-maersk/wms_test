@@ -75,4 +75,11 @@ public class InventoryAdjustmentControllerTest {
         mvc.perform(delete("/api/inventory-adjustments/3"))
                 .andExpect(status().isOk());
     }
+    @Test
+    void testAdjustInventoryWithProcedure() throws Exception {
+        mvc.perform(post("/api/inventory-adjustments/procedure")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"adjustmentID\":3,\"product\":{\"prodId\":1},\"warehouse\":{\"warehouseID\":1},\"adjustmentType\":\"ADD\",\"quantityChange\":20,\"adjustmentDate\":\"2024-06-01\",\"reason\":\"Restock\"}"))
+                .andExpect(status().isOk());
+    }
 }
