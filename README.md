@@ -58,3 +58,14 @@ private Date adjustmentDate;
 private String reason;
 
 ```
+<img width="964" height="521" alt="image" src="https://github.com/user-attachments/assets/25fb921e-7f5c-4d51-9f11-e2413817b90a" />
+CONTROLLER
+
+<img width="733" height="505" alt="image" src="https://github.com/user-attachments/assets/b76cbcaa-70b6-41af-a8e8-161fc8e52a8b" />
+DTO
+
+<img width="279" height="283" alt="image" src="https://github.com/user-attachments/assets/7803002e-3462-4b72-97c9-697c174baef1" />
+SWAGGER UI
+
+
+
